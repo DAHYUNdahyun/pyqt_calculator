@@ -1,7 +1,7 @@
 # pyqt_calculator
 The simple calculator based in PyQts
 
-##requirements
+## requirements
 PyQts module
 
 ### installation requirements
