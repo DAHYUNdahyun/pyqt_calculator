@@ -25,23 +25,41 @@ class Main(QDialog):
         layout_equation_solution.addRow(label_equation, self.equation)
         layout_equation_solution.addRow(label_solution, self.solution)
 
-        ### 사칙연상 버튼 생성
+        ### 사칙연산 버튼 생성
         button_plus = QPushButton("+")
         button_minus = QPushButton("-")
         button_product = QPushButton("x")
         button_division = QPushButton("/")
 
+        ### 추가 연산 버튼 생성
+        button_remainder = QPushButton("%")
+        button_square= QPushButton("x^2")
+        button_reciprocal = QPushButton("1/x")
+        button_squareroot= QPushButton("√x")
+        
         ### 사칙연산 버튼을 클릭했을 때, 각 사칙연산 부호가 수식창에 추가될 수 있도록 시그널 설정
         button_plus.clicked.connect(lambda state, operation = "+": self.button_operation_clicked(operation))
         button_minus.clicked.connect(lambda state, operation = "-": self.button_operation_clicked(operation))
         button_product.clicked.connect(lambda state, operation = "*": self.button_operation_clicked(operation))
         button_division.clicked.connect(lambda state, operation = "/": self.button_operation_clicked(operation))
 
+        ### 추가 연산 버튼을 클릭했을 때, 각 사칙연산 부호가 수식창에 추가될 수 있도록 시그널 설정
+        button_remainder.clicked.connect(lambda state, operation = "%": self.button_operation_clicked(operation))
+        button_square.clicked.connect(lambda state, operation = "^2": self.button_operation_clicked(operation))
+        button_reciprocal.clicked.connect(lambda state, operation = "^(-1)": self.button_operation_clicked(operation))
+        button_squareroot.clicked.connect(lambda state, operation = "√": self.button_operation_clicked(operation))
+        
         ### 사칙연산 버튼을 layout_operation 레이아웃에 추가
         layout_operation.addWidget(button_plus)
         layout_operation.addWidget(button_minus)
         layout_operation.addWidget(button_product)
         layout_operation.addWidget(button_division)
+        
+        ### 추연산 버튼을 layout_operation 레이아웃에 추가
+        layout_operation.addWidget(button_remainder, 0,0)
+        layout_operation.addWidget(button_square, 1,1)
+        layout_operation.addWidget(button_reciprocal, 1,0)
+        layout_operation.addWidget(button_squareroot, 1,2)
 
         ### =, clear, backspace 버튼 생성
         button_equal = QPushButton("=")
